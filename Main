@@ -1,0 +1,43 @@
+class ATM   
+{
+    
+    private String accNo;
+    private String accPassword;
+    private double balance;
+
+    
+    public ATM(String AccNo, String Password, double Balance) 
+    {
+        accNo = AccNo;
+        accPassword = Password;
+        balance = Balance;
+    }
+
+  public String withdrawal(String password, String amount) {
+    double amount1 = Double.parseDouble(amount);
+    if (password.equals(accPassword)) {
+      if (amount1 > balance) {
+        return "Insufficient balance";
+      } else if(balance > amount1) {
+        balance -= amount1;
+        return "Withdrawal is successful. Your current balance is $ " + balance;
+      } else if(amount1 >= 50000){ 
+        return "Please enter the correct amount.";
+      } else {
+        return "Please enter the correct amount.";
+      }
+    } else{
+      return "password incorrect";
+    }
+  }
+
+}
+
+
+
+class Main {
+  public static void main(String[] args) {
+    ATM myBankAcc = new ATM("1233454", "54321", 100);
+    System.out.println( myBankAcc.withdrawal("54321", "50"));
+  }
+}
